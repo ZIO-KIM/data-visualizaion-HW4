@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Covid19 Confirmed'],
+          ['California', 1019689],
+          ['Colorado', 145709],
+          ['Florida', 865607],
+          ['Georgia', 402981],
+          ['Hawaii', 16403],
+          ['Illinois', 542788],
+          ['Massachusetts', 182648],
+          ['Michigan', 257474],
+          ['North Carolina', 303206],
+          ['New Jersey', 263492],
+          ['Nevada', 111504],
+          ['New York', 554798],
+          ['Texas', 1069676],
+          ['Virginia', 191521],
+          ['Washington', 132786]
+        ]);
+
+        var options = {
+          width: 800,
+          height: 500,
+          colorAxis: {colors: ['#f2e1e1', '#f53838']}};
+
+          options['region'] = 'US';
+          options['resolution'] = 'provinces';
+          options['colors'] = [];
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="regions_div" style="width: 1500px; height: 700px;"></div>
+  </body>
+</html>
